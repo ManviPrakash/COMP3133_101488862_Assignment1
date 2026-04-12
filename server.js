@@ -38,8 +38,11 @@ async function start() {
 
   const PORT = process.env.PORT || 4000;
   app.listen(PORT, () => {
-    console.log(`✅ Server running on http://localhost:${PORT}${server.graphqlPath}`);
+    console.log(`✅ Server running on port ${PORT}${server.graphqlPath}`);
   });
 }
 
-start().catch((e) => console.error("❌ Server failed:", e));
+start().catch((e) => {
+  console.error("❌ Server failed:", e);
+  process.exit(1);
+});
